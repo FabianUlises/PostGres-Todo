@@ -1,9 +1,11 @@
 // Dependencies
 import React from 'react';
 
-const ListHeader = () => {
+const ListHeader = (props) => {
   return (
-    <div>ListHeader</div>
+    <div className='list-header'>
+      {props.title}
+    </div>
   );
 };
 

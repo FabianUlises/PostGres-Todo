@@ -5,7 +5,7 @@ import ListHeader from './components/listheader/ListHeader';
 function App() {
   return (
     <div className="App">
-      <ListHeader />
+      <ListHeader title='📃 Current Tasks' />
     </div>
   );
 }

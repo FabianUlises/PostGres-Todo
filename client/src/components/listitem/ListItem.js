@@ -1,9 +1,12 @@
 // Dependencies
 import React from 'react';
-
-const ListItem = () => {
+// Styles
+import styles from './listitem.css';
+const ListItem = (props) => {
   return (
-    <div>ListItem</div>
+    <div className='list-item'>
+      {props.title}
+    </div>
   );
 };
 

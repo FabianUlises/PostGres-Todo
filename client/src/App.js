@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 // Components
 import ListHeader from './components/listheader/ListHeader';
+import ListItem from './components/listitem/ListItem';
 function App() {
   // State
   const [todos, setTodos] = useState(null);
@@ -26,9 +27,7 @@ function App() {
   }, []);
   // Display todos on dom if there is todos else rendering 'loading todos'
   const displayTodos = !todos ? <p>loading todos...</p> : todos.map((todo) => (
-    <div>
-      {todo.title}
-    </div>
+    <ListItem title={todo.title} key={todo.id} />
   ));
   return (
     <div className="App">

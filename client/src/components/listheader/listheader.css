@@ -10,11 +10,17 @@
     display: flex;
     align-items: center;
 }
-.button-container button {
-    margin: 0 5px;
-    padding: 5px 10px;
-    font-size: 10px;
-    border-radius: 12px;
-    background: transparent;
-    cursor: pointer;
+.create-btn {
+    border: 1.5px solid rgb(108, 115, 148);
+    color: rgb(108, 115, 148);
+}
+.create-btn:hover {
+    background: rgb(108, 115, 148);
+    color: whitesmoke;
+}
+.create-btn:active {
+    background: rgba(82, 87, 115, 0.775)
+}
+.signout-btn:hover {
+    border-color: tomato;
 }

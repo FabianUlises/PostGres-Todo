@@ -5,5 +5,42 @@
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.005);
     display: flex;
     justify-content: space-between;
-    padding: .8rem .4rem;
+    padding: .4rem .2rem;
+}
+.list-item__content {
+    inline-size: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .8rem;
+}
+.list-item__button-container {
+    display: flex;
+    gap: .5rem;
+}
+.edit-btn, .delete-btn {
+    align-self: center;
+    transition: all 250ms ease;
+}
+.edit-btn {
+    border: 1.5px solid rgb(141, 181, 145);
+    color: rgb(41, 152, 53);
+}
+.edit-btn:hover {
+    background: rgb(141, 181, 145);
+    color: whitesmoke;
+}
+.edit-btn:active {
+    background: rgba(109, 150, 113, 0.782);
+}
+.delete-btn {
+    border: 1.5px solid rgb(255, 175, 163);
+    color: rgba(255, 0, 0, 0.776);
+}
+.delete-btn:hover {
+    background: rgba(255, 0, 0, 0.705);
+    color: whitesmoke;
+}
+.delete-btn:active {
+    background: rgba(255, 0, 0, 0.782);
 }

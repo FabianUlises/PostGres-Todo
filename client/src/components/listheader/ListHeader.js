@@ -1,5 +1,7 @@
 // Dependencies
 import React from 'react';
+// Components
+import Modal from '../modal/Modal';
 // Styles
 import styles from './listheader.css';
 const ListHeader = (props) => {
@@ -14,6 +16,7 @@ const ListHeader = (props) => {
         <button className='create-btn' type='button'>Add New</button>
         <button onClick={signOut} className='signout-btn' type='button'>Sign Out</button>
       </div>
+      <Modal />
     </div>
   );
 };

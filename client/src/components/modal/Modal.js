@@ -1,6 +1,7 @@
 // Dependencies
 import React, { useState } from 'react';
-
+// Styles
+import styles from './modal.css';
 const Modal = () => {
   // State
   const [input, setInput] = useState('');
@@ -19,7 +20,8 @@ const Modal = () => {
         </div>
         <form className='modal__form'>
           <input onChange={handleInput} required maxLength={30} placeholder='your task goes here' name='title' value={''} />
-          <input onChange={handleInput} required type='range' min={0} max={100} name='progress' value={''} />
+          <label for='range'>Progress</label>
+          <input id='range' nChange={handleInput} required type='range' min={0} max={100} name='progress' value={''} />
           <button className={`form-${mode}-btn`} type='submit'>{mode}</button>
         </form>
       </div>

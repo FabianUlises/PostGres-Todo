@@ -7,6 +7,7 @@ const cors = require('cors');
 const pool = require('./db');
 // Middleware
 app.use(cors());
+app.use(express.json());
 // Routes
 app.get('/todos/:userEmail', async(req, res) => {
     const { userEmail } = req.params;

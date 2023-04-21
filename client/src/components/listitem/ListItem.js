@@ -1,7 +1,7 @@
 // Dependencies
 import React from 'react';
 // Components
-import TickIcon from './../tickicon/TickIcon';
+// import TickIcon from './../tickicon/TickIcon';
 import Progressbar from './../progressbar/Progressbar';
 // Styles
 import styles from './listitem.css';
@@ -9,7 +9,7 @@ const ListItem = (props) => {
   return (
     <div className='list-item'>
       <div className='list-item__content'>
-        <TickIcon />
+        <span>✔</span>
         <p className='item-title'>{props.title}</p>
         <Progressbar />
       </div>

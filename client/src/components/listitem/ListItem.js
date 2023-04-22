@@ -18,7 +18,7 @@ const ListItem = (props) => {
   const deleteTodo = async() => {
     try {
       // Makig fetch request to delete task from db
-      const res = await fetch(`http://localhost:4001/todos/${props.todo.id}`, {
+      const res = await fetch(`${process.env.REACT_APP_SERVER}/todos/${props.todo.id}`, {
         method: "DELETE"
       });
       if(res.status === 200) {

@@ -15,7 +15,7 @@ const Modal = (props) => {
     e.preventDefault();
     console.log('button clicked');
     try {
-      const res = await fetch('http://localhost:4001/todos', {
+      const res = await fetch(`${process.env.REACT_APP_SERVER}/todos`, {
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
@@ -33,7 +33,7 @@ const Modal = (props) => {
   const updateData = async(e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`http://localhost:4001/todos/${props.todo.id}`, {
+      const res = await fetch(`${process.env.REACT_APP_SERVER}/todos/${props.todo.id}`, {
         method: "PUT",
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)

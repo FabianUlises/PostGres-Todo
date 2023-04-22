@@ -3,14 +3,17 @@ import React, { useState, useEffect } from 'react';
 // Components
 import ListHeader from './components/listheader/ListHeader';
 import ListItem from './components/listitem/ListItem';
+import Auth from './components/auth/Auth';
 function App() {
   // State
   const [todos, setTodos] = useState(null);
+  const authToken = false;
   // User email
   const userEmail = 'user@test.com';
   // Fetching data from backend
   const getData = async() => {
     try {
+      console.log(process.env.PORT);
       // Fetching data
       const res = await fetch(`http://localhost:4001/todos/${userEmail}`);
       const data = await res.json();
@@ -31,8 +34,13 @@ function App() {
   ));
   return (
     <div className="App">
-      <ListHeader title='📃 Current Tasks' getData={getData} />
-      {displayTodos}
+      {!authToken && <Auth />}
+      {authToken &&
+        <>
+          <ListHeader title='📃 Current Tasks' getData={getData} />
+          {displayTodos}
+        </>
+      }
     </div>
   );
 }

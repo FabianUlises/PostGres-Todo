@@ -7,11 +7,28 @@ import Progressbar from './../progressbar/Progressbar';
 // Styles
 import styles from './listitem.css';
 const ListItem = (props) => {
+  // State
   const [showModal, setShowModal] = useState(false);
+  // Function to toggle modal display
   const displayModal = () => {
+    // Updating state
     setShowModal(true);
   };
-  // console.log(props);
+  // Function to delete task from db
+  const deleteTodo = async() => {
+    try {
+      // Makig fetch request to delete task from db
+      const res = await fetch(`http://localhost:4001/todos/${props.todo.id}`, {
+        method: "DELETE"
+      });
+      if(res.status === 200) {
+        // Running function to get data from db and render on page
+        props.getData();
+      };
+    } catch(err) {
+      console.log(err);
+    }
+  };
   return (
     <div className='list-item'>
       <div className='list-item__content'>
@@ -21,7 +38,7 @@ const ListItem = (props) => {
       </div>
       <div className='list-item__button-container'>
         <button onClick={displayModal} className='edit-btn'>Edit</button>
-        <button className='delete-btn'>Delete</button>
+        <button onClick={deleteTodo} className='delete-btn'>Delete</button>
         {showModal && <Modal mode='edit' setShowModal={setShowModal} todo={props.todo} getData={props.getData} />}
       </div>
     </div>

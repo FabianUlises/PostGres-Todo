@@ -11,7 +11,12 @@
     inline-size: 100%;
     display: flex;
     justify-content: space-between;
+    gap: 1rem;
     padding: .8rem;
+}
+.list-item__content p {
+    inline-size: 100%;
+    font-size: .9rem;
 }
 .list-item__button-container {
     display: flex;

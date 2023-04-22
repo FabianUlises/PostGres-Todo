@@ -5,7 +5,6 @@ import styles from './modal.css';
 const Modal = (props) => {
   const editMode = props.mode === 'edit' ? true : false;
   // State
-  const [input, setInput] = useState('');
   const [data, setData] = useState({
     user_email: editMode ? props.todo.user_email : 'user@test.com' ,
     title: editMode ? props.todo.title : null,
@@ -29,11 +28,28 @@ const Modal = (props) => {
     } catch(err) {
       console.log(err);
     }
-  }
+  };
+  // Function to update data from db
+  const updateData = async(e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch(`http://localhost:4001/todos/${props.todo.id}`, {
+        method: "PUT",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      console.log(res);
+      if(res.status === 200) {
+        props.setShowModal(false);
+        props.getData();
+      }
+    } catch(err) {
+      console.log('Error', err);
+    }
+  };
   // Function to handle input change
   const handleInput = (e) => {
     const { name, value } = e.target;
-    setInput(e.target.value);
     setData({
       ...data,
       [name]: value
@@ -54,7 +70,7 @@ const Modal = (props) => {
           <input onChange={handleInput} required maxLength={30} placeholder='your task goes here' name='title' value={data.title} />
           <label for='range'>Progress</label>
           <input id='range' onChange={handleInput} required type='range' min='0' max='100' name='progress' value={data.progress} />
-          <button onClick={editMode ? '' : postData} className={`form-${props.mode}-btn`} type='submit'>{props.mode}</button>
+          <button onClick={editMode ? updateData : postData} className={`form-${props.mode}-btn`} type='submit'>{props.mode}</button>
         </form>
       </div>
     </div>

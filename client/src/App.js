@@ -27,11 +27,11 @@ function App() {
   }, []);
   // Display todos on dom if there is todos else rendering 'loading todos'
   const displayTodos = !todos ? <p>loading todos...</p> : todos.map((todo) => (
-    <ListItem todo={todo} key={todo.id} />
+    <ListItem todo={todo} key={todo.id} getData={getData} />
   ));
   return (
     <div className="App">
-      <ListHeader title='📃 Current Tasks' />
+      <ListHeader title='📃 Current Tasks' getData={getData} />
       {displayTodos}
     </div>
   );

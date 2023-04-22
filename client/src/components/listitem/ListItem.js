@@ -11,7 +11,7 @@ const ListItem = (props) => {
   const displayModal = () => {
     setShowModal(true);
   };
-  console.log(props);
+  // console.log(props);
   return (
     <div className='list-item'>
       <div className='list-item__content'>
@@ -22,7 +22,7 @@ const ListItem = (props) => {
       <div className='list-item__button-container'>
         <button onClick={displayModal} className='edit-btn'>Edit</button>
         <button className='delete-btn'>Delete</button>
-        {showModal && <Modal mode='edit' setShowModal={setShowModal} todo={props.todo} />}
+        {showModal && <Modal mode='edit' setShowModal={setShowModal} todo={props.todo} getData={props.getData} />}
       </div>
     </div>
   );

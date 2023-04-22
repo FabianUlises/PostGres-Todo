@@ -8,4 +8,4 @@ CREATE TABLE users (
     email VARCHAR(255) PRIMARY KEY,
     hashed_password VARCHAR(255)
 );
-INSERT INTO todos (id, user_email, title, progress, date) VALUES('0', 'user@test.com', 'First todo', 10);
+INSERT INTO todos (id, user_email, title, progress) VALUES('0', 'user@test.com', 'First todo', 10);

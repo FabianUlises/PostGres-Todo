@@ -6,7 +6,7 @@ import Modal from '../modal/Modal';
 import styles from './listheader.css';
 const ListHeader = (props) => {
   // State
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const [mode, setMode] = useState();
   // Function to handle signout button
   const signOut = () => {
@@ -23,7 +23,7 @@ const ListHeader = (props) => {
         <button onClick={displayModal} className='create-btn' type='button'>Add New</button>
         <button onClick={signOut} className='signout-btn' type='button'>Sign Out</button>
       </div>
-      {showModal && <Modal mode={'create'} setShowModal={setShowModal} />}
+      {showModal && <Modal mode={'create'} setShowModal={setShowModal} getData={props.getData} />}
     </div>
   );
 };

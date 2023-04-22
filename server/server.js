@@ -38,7 +38,22 @@ app.post('/todos', async(req, res) => {
     } catch (err) {
       console.error(err)
     }
-  })
+});
+// Update task from db
+app.patch('/todos/:id', async(req, res) => {
+  // Getting id from request params
+  const { id } = req.params;
+  // Getting task info from request body
+  const { user_email, title, progress } = req.body;
+  try {
+    // Updating task
+    const updatedTodo = pool.query('UPDATE todos SET user_email = $1, title = $2, progress = $3, id = $4;', [user_email, title, progress, id]);
+    res.json(updatedTodo);
+  } catch(err) {
+    console.log('Error', err);
+  }
+});
+
 // Server on
 app.listen(process.env.PORT, () => 
   console.log(`server listeningn on port: ${process.env.PORT}`));

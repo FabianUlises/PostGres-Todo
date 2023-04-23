@@ -4,11 +4,10 @@
   "description": "",
   "scripts": {
     "build": "if-env TYPE=server && (cd server && npm install) || (cd client && npm install)",
-    "server": "nodemon ./server/server",
+    "server": "node ./server/server",
     "client": "cd client && npm start"
   },
   "dependencies": {
-    "if-env": "^1.0.4",
-    "react-cookie": "^4.1.1"
+    "if-env": "^1.0.4"
   }
 }

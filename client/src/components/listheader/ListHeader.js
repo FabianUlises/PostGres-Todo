@@ -1,16 +1,23 @@
 // Dependencies
 import React, { useState } from 'react';
+import { useCookies } from 'react-cookie';
 // Components
 import Modal from '../modal/Modal';
 // Styles
 import styles from './listheader.css';
 const ListHeader = (props) => {
+  // Cookies
+  const [cookies, setCookie, removeCookie] = useCookies(null);
   // State
   const [showModal, setShowModal] = useState(false);
   const [mode, setMode] = useState();
   // Function to handle signout button
   const signOut = () => {
-    console.log('signout');
+    // Removing cookies & logging out
+    removeCookie('Email');
+    removeCookie('AuthToken');
+    // Refreshing page to kick user out
+    window.location.reload();
   };
   // Function to show modal
   const displayModal = () => {

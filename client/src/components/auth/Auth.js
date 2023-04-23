@@ -1,6 +1,9 @@
 // Dependencies
 import React, { useState } from 'react';
+import { useCookies } from 'react-cookie';
 const Auth = () => {
+    // Cookies
+    const [cookies, setCookie, removeCookie] = useCookies(null); 
     // State
     const [error, setError] = useState(null);
     const [isLogIn, setIsLogIn] = useState(true);
@@ -30,7 +33,13 @@ const Auth = () => {
         });
         console.log(res);
         const data = await res.json();
-        console.log(data);
+        if(data.details) {
+            setError(data.details)
+        } else {
+            setCookie('Email', data.email);
+            setCookie('AuthToken', data.token);
+            window.location.reload();
+        }
     };
     return (
         <div className='auth-container'>

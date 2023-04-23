@@ -1,12 +1,15 @@
 // Dependencies
 import React, { useState } from 'react';
+import { useCookies } from 'react-cookie';
 // Styles
 import styles from './modal.css';
 const Modal = (props) => {
+  // Cookies
+  const [cookies, setCookie, removeCookie] = useCookies(null);
   const editMode = props.mode === 'edit' ? true : false;
   // State
   const [data, setData] = useState({
-    user_email: editMode ? props.todo.user_email : 'user@test.com' ,
+    user_email: editMode ? props.todo.user_email : cookies.Email ,
     title: editMode ? props.todo.title : null,
     progress: editMode ? props.todo.progress :  50
   });

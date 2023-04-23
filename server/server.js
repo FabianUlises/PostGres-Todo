@@ -82,12 +82,27 @@ app.post('/signup', async(req, res) => {
     const token = jwt.sign({ email }, 'secret', {expiresIn: '1hr' });
     res.json({ email, token });
   } catch(err) {
-    console.log('error');
+    if(err) {
+      res.json({ details: err.detail })
+    }
   }
 });
 // Login route
 app.post('/login', async(req, res) => {
-  res.send('loginroute');
+  const { email, password } = req.body;
+  try {
+    const user = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
+    if(!user.rows.length) return res.json({ details: "User doesn't exist!" });
+    const success = await bcrypt.compare(password, user.rows[0].hashed_password);
+    const token = jwt.sign({ email }, 'secret', { expiresIn: '1hr' });
+    if(success) {
+      res.json({ 'email': user.rows[0].email, token });
+    } else {
+      res.json({ details: 'Login failed' });
+    }
+  } catch(err) {
+    console.log(err);
+  }
 });
 // Server on
 app.listen(process.env.PORT, () => 

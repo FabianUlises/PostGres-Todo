@@ -1,15 +1,17 @@
 // Dependencies
 import React, { useState, useEffect } from 'react';
+import { useCookies } from 'react-cookie';
 // Components
 import ListHeader from './components/listheader/ListHeader';
 import ListItem from './components/listitem/ListItem';
 import Auth from './components/auth/Auth';
 function App() {
+  // Cookies
+  const [cookies, setCookie, removeCookie] = useCookies(null);
+  const authToken = cookies.AuthToken;
+  const userEmail = cookies.Email;
   // State
   const [todos, setTodos] = useState(null);
-  const authToken = false;
-  // User email
-  const userEmail = 'user@test.com';
   // Fetching data from backend
   const getData = async() => {
     try {

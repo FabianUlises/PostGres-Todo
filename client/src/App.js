@@ -17,7 +17,7 @@ function App() {
     try {
       console.log(process.env.PORT);
       // Fetching data
-      const res = await fetch(`http://localhost:4001/todos/${userEmail}`);
+      const res = await fetch(`${process.env.REACT_APP_SERVER}/todos/${userEmail}`);
       const data = await res.json();
       // Updating state with data from back end
       setTodos(data);

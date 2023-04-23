@@ -34,7 +34,7 @@ const ListItem = (props) => {
       <div className='list-item__content'>
         <span>✔</span>
         <p className='item-title'>{props.todo.title}</p>
-        <Progressbar />
+        <Progressbar progress={props.todo.progress} />
       </div>
       <div className='list-item__button-container'>
         <button onClick={displayModal} className='edit-btn'>Edit</button>

@@ -44,3 +44,14 @@ button {
   cursor: pointer;
   text-transform: uppercase;
 }
+.outer-bar {
+  background: rgba(6, 111, 6, 0.183);
+  block-size: 5px;
+  inline-size: 200px;
+  border-radius: 7px;
+  overflow: hidden;
+}
+.inner-bar {
+  background: green;
+  height: 5px;
+}

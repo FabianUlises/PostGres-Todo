@@ -1,9 +1,11 @@
 // Dependencies
 import React from 'react';
 
-const Progressbar = () => {
+const Progressbar = (props) => {
   return (
-    <div>Progressbar</div>
+    <div className='outer-bar'>
+      <div className='inner-bar' style={{ width: `${props.progress}%` }} ></div>
+    </div>
   );
 };
 

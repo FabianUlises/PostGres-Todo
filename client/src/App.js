@@ -42,6 +42,7 @@ function App() {
       {authToken &&
         <>
           <ListHeader title='📃 Current Tasks' getData={getData} />
+          <p className='user-email'>Welcome back {userEmail}</p>
           {displayTodos}
         </>
       }

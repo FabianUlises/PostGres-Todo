@@ -25,8 +25,10 @@ function App() {
   }
   // Useeffect
   useEffect(() => {
-    // Fetching data
-    getData();
+    if(authToken) {
+      // Fetching data
+      getData();
+    }
   }, []);
   // Display todos on dom if there is todos else rendering 'loading todos'
   const displayTodos = !todos ? <p>loading todos...</p> : todos.map((todo) => (

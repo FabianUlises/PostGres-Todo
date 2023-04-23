@@ -4,6 +4,8 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const { v4: uuidv4 } = require('uuid');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 // Postgres db connection
 const pool = require('./db');
 // Middleware
@@ -62,6 +64,30 @@ app.delete('/todos/:id', async(req, res) => {
   }catch(err) {
     console.log(err);
   }
+});
+// Signup Route
+app.post('/signup', async(req, res) => {
+  // Getting email and password from request body
+  const { email, password } = req.body;
+  // Generating salt for password
+  const salt = bcrypt.genSaltSync(10);
+  // Hashing password
+  const hashedPassword = bcrypt.hashSync(password, salt);
+  console.log(email, password);
+  console.log(hashedPassword);
+  try {
+    // Saving user email and password to db
+    const signUp = await pool.query(`INSERT INTO users (email, hashed_Password) VALUES($1, $2)`, [email, hashedPassword]);
+    // Creating web token
+    const token = jwt.sign({ email }, 'secret', {expiresIn: '1hr' });
+    res.json({ email, token });
+  } catch(err) {
+    console.log('error');
+  }
+});
+// Login route
+app.post('/login', async(req, res) => {
+  res.send('loginroute');
 });
 // Server on
 app.listen(process.env.PORT, () => 

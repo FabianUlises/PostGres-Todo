@@ -15,7 +15,6 @@ function App() {
   // Fetching data from backend
   const getData = async() => {
     try {
-      console.log(process.env.PORT);
       // Fetching data
       const res = await fetch(`${process.env.REACT_APP_SERVER}/todos/${userEmail}`);
       const data = await res.json();
